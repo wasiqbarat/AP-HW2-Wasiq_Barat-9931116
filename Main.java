@@ -11,9 +11,6 @@ public class Main {
         N = Integer.parseInt(inputToArray[1]);
 
         Cinema cinema = new Cinema(N);
-        for ( Row row: cinema.getCinemaRows()) {
-
-        }
 
         for (int i = 0; i < Q; i++) {
             String reserve = scanner.nextLine();
@@ -22,16 +19,19 @@ public class Main {
             int r = Integer.parseInt(reserveToArray[1]);
             int x = Integer.parseInt(reserveToArray[2]);
 
-            for ( int j = 0; j < cinema.getCinemaRows().length; j++) {
-                if (cinema.checkChair(l, r, x)) {
-                    cinema.occupyChairs(l, r, x);
+            if ( x > N) {
+                System.out.println("false");
+            }else if ( x == 0 || l > r  || r < 0 || l > 10) {
+                System.out.println("false");
+            }else {
+
+                for (int j = 0; j < cinema.getCinemaRows().length; j++) {
+
+                    if (cinema.checkChair(l, r, x)) {
+                        cinema.occupyChairs(l, r, x);
+                    }
                 }
             }
-
         }
-
-
-
-
     }
 }
